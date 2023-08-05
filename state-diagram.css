@@ -1,0 +1,58 @@
+.svg-container {
+	border: 1px solid black;
+}
+
+.state {
+	fill: #ffff86;
+	cursor: move;
+}
+
+.state.selected {
+	fill: #7c7d41;
+}
+
+.state .circle {
+	stroke: black;
+	stroke-width: 1px;
+}
+.state .circle.accept {
+	stroke: green;
+}
+.state .circle.reject {
+	stroke: red;
+}
+
+.state .text {
+	text-anchor: middle;
+	fill: black;
+}
+
+.state .start {
+	stroke: black;
+	fill: none;
+	stroke-width: 1px;
+}
+
+.state .start.selected {
+	stroke: red;
+}
+
+.arrow-group {
+	pointer-events: none;
+}
+.arrow-group .arrow {
+	fill: none;
+	stroke-width: 1px;
+	stroke: black;
+}
+.arrow-group .arrow.selected {
+	stroke: red;
+}
+.arrow-group .text {
+	text-anchor: middle;
+	font-size: 12px;
+	fill: black;
+}
+.arrow-group .text.selected {
+	fill: red;
+}

@@ -1,0 +1,81 @@
+{
+  "states": [
+    {
+      "name": "q0",
+      "x": 100,
+      "y": 100
+    },
+    {
+      "name": "q1",
+      "x": 300,
+      "y": 100
+    },
+    {
+      "name": "q2",
+      "x": 300,
+      "y": 200
+    },
+    {
+      "name": "q3",
+      "x": 100,
+      "y": 200,
+      "type": "reject"
+    },
+    {
+      "name": "q4",
+      "x": 100,
+      "y": 300,
+      "type": "accept"
+    }
+  ],
+  "transitions": [
+    {
+      "from": "q0",
+      "to": "q0",
+      "symbol": "{",
+      "mode": "R"
+    },
+    {
+      "from": "q0",
+      "to": "q0",
+      "symbol": "a",
+      "mode": "R"
+    },
+    {
+      "from": "q0",
+      "to": "q0",
+      "symbol": "b",
+      "mode": "R"
+    },
+    {
+      "from": "q0",
+      "to": "q1",
+      "symbol": "}",
+      "mode": "L"
+    },
+    {
+      "from": "q1",
+      "to": "q2",
+      "symbol": "a",
+      "mode": "L"
+    },
+    {
+      "from": "q1",
+      "to": "q2",
+      "symbol": "b",
+      "mode": "L"
+    },
+    {
+      "from": "q2",
+      "to": "q4",
+      "symbol": "a",
+      "mode": "R"
+    },
+    {
+      "from": "q2",
+      "to": "q3",
+      "symbol": "b",
+      "mode": "R"
+    }
+  ]
+}
