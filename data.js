@@ -156,5 +156,6 @@ function Data() {
 	return {
 		getDefaults,
 		getFromFile,
+		validateData,
 	};
 }

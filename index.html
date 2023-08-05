@@ -75,36 +75,71 @@
 			border: 1px solid black;
 			border-radius: 4px;
 		}
+
+		#state-input {
+			width: 500px;
+			height: 200px;
+		}
+		.flex-row {
+			display: flex;
+			flex-direction: row;
+  			flex-wrap: wrap;
+			align-items: center;
+		}
+		#machine-container {
+			margin-right: 50px;
+		}
 	</style>
 </head>
 
 <body>
-	<label for="input">Enter input: </label>
-	<input type="text" id="input">
-	<button id="enter">Enter</button>
-	<br />
-	<button id="step">Step</button>
-	<button id="auto">Auto</button>
-	<input type="range" min="200" max="5000" value="500" id="speed">
-	<br />
-	<label for="load-file">Load from file</label>
-	<input type="file" id="load-file" accept=".json">
-	<div id="machine-container">
-		<div id="machine-0">
+	<div class="flex-row">
+		<div id="machine-container">
+			<div id="machine-0">
+			</div>
+		</div>
+
+		<div>
+			<div>
+				<label for="input">Enter input: </label>
+				<input type="text" id="input">
+				<button id="enter">Enter</button>
+				<br />
+				<button id="step">Step</button>
+				<button id="auto">Auto</button>
+				<input type="range" min="200" max="5000" value="500" id="speed">
+			</div>
+
+			<hr />
+
+			<div>
+				<label for="load-file">Load from file</label>
+				<input type="file" id="load-file" accept=".json">
+				<br />
+				<label for="state-input">Enter state data: </label>
+				<button id="load-state">Load</button>
+				<button id="refresh-state">Get current states</button>
+				<br />
+				<textarea id="state-input" > </textarea>
+			</div>
+
+			<hr />
+			<a href="https://github.com/qwerttyuiiop1/STALGCM-MCO/" target="_blank"> View github </a> :>
 		</div>
 	</div>
 </body>
 <script>
 	let machineCtr = 0;
+	const stateInput = document.getElementById('state-input');
 	const createMachine = (data) => {
 		const div = document.createElement('div');
 		div.id = `machine-${machineCtr++}`;
 		document.getElementById('machine-container').appendChild(div);
+		stateInput.value = JSON.stringify(data, null, 2);
 		return new Machine(div.id, data);
 	}
 
 	const data = new Data().getDefaults();
-
 	const inputBtn = document.getElementById('input');
 	const autoBtn = document.getElementById('auto');
 	let autoSpeed = document.getElementById('speed').value;
@@ -159,6 +194,18 @@
 			states: data.states,
 			transitions: data.transitions
 		});
+	}
+	document.getElementById('load-state').onclick = () => {
+		const data = JSON.parse(stateInput.value);
+		document.getElementById('machine-container').innerHTML = '';
+		machine = createMachine({
+			states: data.states,
+			transitions: data.transitions
+		});
+	}
+	document.getElementById('refresh-state').onclick = () => {
+		const { states, transitions } = machine.getMachineData();
+		stateInput.value = JSON.stringify({ states, transitions }, null, 2);
 	}
 </script>
 
