@@ -4,7 +4,7 @@ function Data() {
 			name: 'q0',
 			x: 100, y: 100,
 			start: {
-				ux: -1, uy: 0,
+				rot: 180,
 				id: 'start'
 			},
 		},
@@ -30,7 +30,8 @@ function Data() {
 	const transitions = [
 		{
 			from: 'q0', to: 'q0',
-			symbol: '{', mode: 'R'
+			symbol: '{', mode: 'R',
+			rot: 90
 		},
 		{
 			from: 'q0', to: 'q0',
