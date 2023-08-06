@@ -15,12 +15,15 @@ function StateDiagram(stateData, transitions, svgId) {
 				from: cur.from,
 				to: cur.to,
 				transitions: [],
-				rot: 90
+				rot: 90,
+				pos: 'top',
 			};
 			acc.push(prev);
 		}
-		if (cur.rot !== undefined)
-			prev.rot = cur.rot;
+		if (cur.rot !== undefined) prev.rot = cur.rot;
+		if (cur.curve !== undefined) prev.curve = cur.curve;
+		if (cur.pos !== undefined) prev.pos = cur.pos;
+
 		prev.transitions.push(cur);
 		return acc;
 	}, []);
@@ -68,7 +71,12 @@ function StateDiagram(stateData, transitions, svgId) {
 
 			const [startX, startY] = [radius, 0];
 			[endX, endY] = [lineLen + radius, 0];
-			line = `M ${startX},${startY} L ${endX},${endY}`;
+			if (arrow.curve === undefined) {
+				line = `M ${startX},0 L ${endX},${endY}`;
+			} else {
+				const [cx, cy] = [(startX + endX) / 2, -arrow.curve];
+				line = `M ${startX},${startY} Q ${cx},${cy} ${endX},${endY}`;
+			}
 			[ux, uy] = [1, 0];
 		}
 		const p1 = [
@@ -127,11 +135,14 @@ function StateDiagram(stateData, transitions, svgId) {
 			const dx = to.x - from.x;
 			const dy = to.y - from.y;
 			const dist = Math.sqrt(dx * dx + dy * dy);
-			p = [ dist / 2, -10 ];
+			const yoffset = -10 - (arrow.curve || 0);
+			p = [ dist / 2, yoffset ];
 		}
-		const rotPos = [ 0 , -arrow.transitions.length/2 * 15]
+		const textHeight = arrow.transitions.length * 15;
+		if (arrow.pos === 'bot')
+			p[1] += 20 + textHeight;
 		return `translate(${p[0]}, ${p[1]})` + 
-			` rotate(${-rot}, ${rotPos[0]}, ${rotPos[1]})`;
+			` rotate(${-rot}, ${0}, ${-textHeight/2})`;
 	}
 
 	const width = 500;

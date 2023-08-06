@@ -43,7 +43,8 @@ function Data() {
 		},
 		{
 			from: 'q0', to: 'q1',
-			symbol: '}', mode: 'L'
+			symbol: '}', mode: 'L',
+			curve: 15, pos: 'bot'
 		},
 		{
 			from: 'q1', to: 'r',
