@@ -1,0 +1,248 @@
+{
+    "states": [
+      {
+        "name": "q0",
+        "x": 50,
+        "y": 119,
+        "start": {
+          "ux": -1,
+          "uy": 0,
+          "id": "start",
+          "rot": 180
+        },
+        "state": {
+          "startX": 50,
+          "startY": 119
+        }
+      },
+      {
+        "name": "q1",
+        "x": 265,
+        "y": 119,
+        "state": {
+          "startX": 265,
+          "startY": 119
+        }
+      },
+      {
+        "name": "q2",
+        "x": 409,
+        "y": 313,
+        "state": {
+          "startX": 409,
+          "startY": 313
+        }
+      },
+      {
+        "name": "q3",
+        "x": 265,
+        "y": 475,
+        "state": {
+          "startX": 265,
+          "startY": 475
+        }
+      },
+      {
+        "name": "q4",
+        "x": 455,
+        "y": 475,
+        "type": "accept",
+        "state": {
+          "startX": 455,
+          "startY": 475
+        }
+      },
+      {
+        "name": "q5",
+        "x": 106,
+        "y": 316,
+        "type": "reject",
+        "state": {
+          "startX": 106,
+          "startY": 316
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "from": "q0",
+        "to": "q0",
+        "symbol": "{",
+        "mode": "R"
+      },
+      {
+        "from": "q0",
+        "to": "q0",
+        "symbol": "a",
+        "mode": "R"
+      },
+      {
+        "from": "q0",
+        "to": "q0",
+        "symbol": "b",
+        "mode": "R"
+      },
+      {
+        "from": "q0",
+        "to": "q0",
+        "symbol": "c",
+        "mode": "R"
+      },
+      {
+        "from": "q0",
+        "to": "q1",
+        "symbol": "}",
+        "mode": "L"
+      },
+      {
+        "from": "q1",
+        "to": "q2",
+        "symbol": "c",
+        "mode": "L"
+      },
+      {
+        "from": "q2",
+        "to": "q3",
+        "symbol": "b",
+        "mode": "L"
+      },
+      {
+        "from": "q3",
+        "to": "q4",
+        "symbol": "a",
+        "mode": "L"
+      },
+      {
+        "from": "q1",
+        "to": "q5",
+        "symbol": "a",
+        "mode": "R"
+      },
+      {
+        "from": "q1",
+        "to": "q5",
+        "symbol": "b",
+        "mode": "R"
+      },
+      {
+        "from": "q1",
+        "to": "q5",
+        "symbol": "{",
+        "mode": "R"
+      },
+      {
+        "from": "q1",
+        "to": "q5",
+        "symbol": "}",
+        "mode": "L"
+      },
+      {
+        "from": "q2",
+        "to": "q5",
+        "symbol": "a",
+        "mode": "R"
+      },
+      {
+        "from": "q2",
+        "to": "q5",
+        "symbol": "c",
+        "mode": "R"
+      },
+      {
+        "from": "q2",
+        "to": "q5",
+        "symbol": "{",
+        "mode": "R"
+      },
+      {
+        "from": "q2",
+        "to": "q5",
+        "symbol": "}",
+        "mode": "L"
+      },
+      {
+        "from": "q3",
+        "to": "q5",
+        "symbol": "b",
+        "mode": "R"
+      },
+      {
+        "from": "q3",
+        "to": "q5",
+        "symbol": "c",
+        "mode": "R"
+      },
+      {
+        "from": "q3",
+        "to": "q5",
+        "symbol": "{",
+        "mode": "R"
+      },
+      {
+        "from": "q3",
+        "to": "q5",
+        "symbol": "}",
+        "mode": "L"
+      },
+      {
+        "from": "q4",
+        "to": "q4",
+        "symbol": "a",
+        "mode": "R"
+      },
+      {
+        "from": "q4",
+        "to": "q4",
+        "symbol": "b",
+        "mode": "R"
+      },
+      {
+        "from": "q4",
+        "to": "q4",
+        "symbol": "c",
+        "mode": "R"
+      },
+      {
+        "from": "q4",
+        "to": "q4",
+        "symbol": "{",
+        "mode": "R"
+      },
+      {
+        "from": "q4",
+        "to": "q4",
+        "symbol": "}",
+        "mode": "L"
+      },
+      {
+        "from": "q5",
+        "to": "q5",
+        "symbol": "a",
+        "mode": "R"
+      },
+      {
+        "from": "q5",
+        "to": "q5",
+        "symbol": "b",
+        "mode": "R"
+      },
+      {
+        "from": "q5",
+        "to": "q5",
+        "symbol": "c",
+        "mode": "R"
+      },
+      {
+        "from": "q5",
+        "to": "q5",
+        "symbol": "{",
+        "mode": "R"
+      },
+      {
+        "from": "q5",
+        "to": "q5",
+        "symbol": "}",
+        "mode": "L"
+      }
+    ]
+  }
