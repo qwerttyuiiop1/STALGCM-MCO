@@ -18,7 +18,7 @@
 ## Modifying the Machine
 1. You can either input a JSON file representing your custom automaton or manually modify the text box with the sample machine provided.
 
-2. The format for the JSON file is located in file_format.md
+2. The format for the JSON file is shown below
 <br />
 <br />
 
