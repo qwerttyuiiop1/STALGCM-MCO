@@ -18,16 +18,11 @@
 ## Modifying the Machine
 1. You can either input a JSON file representing your custom automaton or manually modify the text box with the sample machine provided.
 
-2. The format for the JSON file is shown below
+2. The format for the JSON file is shown below.
 <br />
 <br />
 
 # File Input Instructions:
-
-- Replace "state_name_1", "state_name_2", etc. with the names of your states. You can add more states by following the same format and placing them inside the "states" array. The "x" and "y" fields for each state represent the X and Y coordinates of the state's position in the diagram. Update these values to reflect the desired location of each state in the diagram. 
-- If you want a state to be the start state, include the "start" object within the state and provide the "rot" (rotation) and the identifier for the start state. 
-- Replace "state_type" with "accept" if the state is an accepting state, or "reject" if it's a rejecting state. This is optional, and you can remove the "type" field if the state is neither accepting nor rejecting.
-- Replace "from_state_name", "to_state_name", and "transition_symbol" with the appropriate values for your transitions. The "transition_symbol" represents the symbol that triggers the transition from one state to another. "mode" can be either "L" or "R" to move the tape head Left or Right. You can add more transitions by following the same format and placing them inside the "transitions" array.
 
 
 ## Sample File Format
@@ -77,4 +72,8 @@
 }
 
 ```
+- Replace "state_name_1", "state_name_2", etc. with the names of your states. You can add more states by following the same format and placing them inside the "states" array. The "x" and "y" fields for each state represent the X and Y coordinates of the state's position in the diagram. Update these values to reflect the desired location of each state in the diagram. 
+- If you want a state to be the start state, include the "start" object within the state and provide the "rot" (rotation) and the identifier for the start state. 
+- Replace "state_type" with "accept" if the state is an accepting state, or "reject" if it's a rejecting state. This is optional, and you can remove the "type" field if the state is neither accepting nor rejecting.
+- Replace "from_state_name", "to_state_name", and "transition_symbol" with the appropriate values for your transitions. The "transition_symbol" represents the symbol that triggers the transition from one state to another. "mode" can be either "L" or "R" to move the tape head Left or Right. You can add more transitions by following the same format and placing them inside the "transitions" array.
 
