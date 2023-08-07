@@ -40,8 +40,8 @@
       "x": 300,   
       "y": 100,   
       "start": {
-        "rot": 180,
-        "id": "start"  //Identifier for start state
+        "rot": 180, // Angle of the start symbol in the state
+        "id": "start"  //Currently only supports "start"
       }
     },
     {
@@ -66,6 +66,7 @@
       // Optional properties:
       // "curve": 15,  // Integer value, optional (use for curved arrows)
       // "pos": "bot", // String value, optional (position of curved arrow: "top" or "bot")
+      // "rot": 60, // Specifies the angle of the transition for transitions to the same state
     },
     // Add more transitions here...
   ]
