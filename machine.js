@@ -64,6 +64,7 @@ function Machine(containerId, machineData) {
 		isFinished = true;
 		output.innerHTML = 'Rejected';
 		output.style.color = 'red';
+		render();
 	}
 
 	const getTransition = (state, char) => {
@@ -79,30 +80,37 @@ function Machine(containerId, machineData) {
 		if (index == -1) {
 			index = 0;
 			currState = states.find((state) => state.start);
-			if (!currState) return error()
+			if (!currState) return error();
 		}
 
+		if (currState.type === 'accept') {
+			isFinished = true;
+			output.innerHTML = 'Accepted';
+			output.style.color = 'green';
+			transition = null;
+			transitionType = null;
+			return render();
+		} else if (currState.type === 'reject') {
+			transition = null;
+			transitionType = null;
+			return error();
+		}
+
+		//next transition is advanced one step in ui
 		t = getTransition(currState, string[index]);
 		transition = t[0] && t[0].transition;
 		transitionType = t[0] && t[0].transitionType;
-		currState = transition &&
-			states.find((state) => state.name == transition.to);
 
 		render();
+
+		currState = transition &&
+			states.find((state) => state.name == transition.to);
 		
 		if (!transition) return error()
 		if (transition.mode === 'R')
 			index++;
 		else if (transition.mode === 'L')
 			index--;
-		
-		if (currState.type === 'accept') {
-			isFinished = true;
-			output.innerHTML = 'Accepted';
-			output.style.color = 'green';
-		} else if (currState.type === 'reject') {
-			return error();
-		}
 	}
 
 	const getMachineData = () => ({

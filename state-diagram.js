@@ -73,11 +73,14 @@ function StateDiagram(stateData, transitions, svgId) {
 			[endX, endY] = [lineLen + radius, 0];
 			if (arrow.curve === undefined) {
 				line = `M ${startX},0 L ${endX},${endY}`;
+				[ux, uy] = [1, 0];
 			} else {
 				const [cx, cy] = [(startX + endX) / 2, -arrow.curve];
 				line = `M ${startX},${startY} Q ${cx},${cy} ${endX},${endY}`;
+				const m = 4 * arrow.curve / lineLen;
+				const norm = Math.sqrt(1 + m * m);
+				[ux, uy] = [1 / norm, m / norm];
 			}
-			[ux, uy] = [1, 0];
 		}
 		const p1 = [
 			endX - ux * arrLen - uy * arrWidth, 
